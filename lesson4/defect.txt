@@ -1,0 +1,63 @@
+*Expected Result = E/R
+*Actual Result = A/R
+
+
+1. Функция " to_list_positive" не предусматривает вариант заполнения словами на латинском языке:
+
+Test case: string = ""Привет Skypro", delimeter = ","
+*AssertionError: assert ['Привет Skypro'] == ['Привет', 'Skypro']* ⭢
+
+E/R: ["Привет", "Skypro"]         
+A/R: ["Привет Skypro"]
+
+*FAILLED
+
+2. Функция " to_list_negative" не предусматривает вариант : 
+
+Test case:  string = "1,2,3,4,5", delimeter = ","  
+*AssertionError: assert ['1', '2', '3', '4', '5'] == ['1,2,3,4,5']* ⭢
+
+E/R: ['1,2,3,4,5']
+A/R: ['1', '2', '3', '4', '5']
+
+*FAILLED
+
+3. В функции "test_is_empty_positive" не предусмотрен вариант возвращения ответа False, если строка заполнена :
+
+Test case:  string = 'Skypro'  
+*assert True == False* ⭢
+
+E/R: False
+A/R: True
+
+*FAILLED
+
+4. В функции "test_is_empty_negative" не предусмотрен вариант :
+
+Test case: string = ''
+*assert True == False* ⭢
+
+E/R: False
+A/R: True
+
+*FAILLED
+
+5. В функции "test_is_empty_negative" не предусмотрен вариант :
+
+Test case: string = '  '
+*assert True == False* ⭢
+
+E/R: False
+A/R: True
+
+*FAILLED
+
+6. Функция " list_to_string" не предусматривает вариант : 
+
+Test case:  lst = [1, 2, 3], joiner = '- '  
+*AssertionError: assert '1- 2- 3' == '1-2-3'* ⭢
+
+E/R: '1-2-3'
+A/R: '1- 2- 3'
+
+*FAILLED
