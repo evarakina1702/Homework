@@ -52,3 +52,5 @@ driver.find_element(By.CSS_SELECTOR, "#finish").click()
 driver.quit()
 
 assert txt == "Total: $58.29"
+
+# Чтобы зыпустить "Pytest" , нужно в терминале ввести команду pytest и  нажать Enter
