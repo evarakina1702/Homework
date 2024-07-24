@@ -33,3 +33,5 @@ WebDriverWait(driver, "45").until(EC.text_to_be_present_in_element((By.CSS_SELEC
 assert driver.find_element(By.CSS_SELECTOR, "div.screen").text == "15"
      
 driver.quit()
+
+# Чтобы зыпустить "Pytest" , нужно в терминале ввести команду pytest и  нажать Enter
