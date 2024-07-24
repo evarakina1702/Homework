@@ -41,3 +41,5 @@ for field in other_fields:
     assert field_color == 'rgba(209, 231, 221, 1)', f"{field} is incorrectly marked as invalid"
     
 driver.quit()
+
+# Чтобы зыпустить "Pytest" , нужно в терминале ввести команду pytest и  нажать Enter
