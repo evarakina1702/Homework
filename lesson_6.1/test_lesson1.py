@@ -5,7 +5,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from time import sleep
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
@@ -24,11 +23,9 @@ driver.find_element(By.NAME, "city").send_keys("Москва")
 driver.find_element(By.NAME, "country").send_keys("Россия")
 driver.find_element(By.NAME, "job-position").send_keys("Qa")
 driver.find_element(By.NAME, "company").send_keys("SkyPro")
-sleep(3)
 
 # Нажать на кнопку "Submit"
 WebDriverWait(driver, 40, 0.1).until(EC.element_to_be_clickable((By.TAG_NAME, "button"))).click()
-sleep(2)  
 
 # Проверить, что поле zip-code подсвечено красным
 zip_code_color = driver.find_element(By.CSS_SELECTOR, "#zip-code").value_of_css_property("background-color")
