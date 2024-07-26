@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
-from time import sleep
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
@@ -20,13 +19,9 @@ input_delay.send_keys('45')
 
 # Нажать на кнопки:
 driver.find_element(By.XPATH, '//span[contains(text(),"7")]').click()
-sleep(1)
 driver.find_element(By.XPATH, '//span[contains(text(),"+")]').click()
-sleep(1)
 driver.find_element(By.XPATH, '//span[contains(text(),"8")]').click()
-sleep(1)
 driver.find_element(By.XPATH, '//span[contains(text(),"=")]').click()
-sleep(1)
 
 # Проверить, что в окне отобразится результат 15 через 45 секунд
 WebDriverWait(driver, "45").until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "div.screen"), "15"))
