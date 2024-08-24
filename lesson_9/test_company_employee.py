@@ -1,13 +1,13 @@
 import requests
-from lesson_9.utils.EmployeeAPI import EmployeeApi
-from lesson_9.utils.CompanyAPI import CompanyApi
-from lesson_9.utils.EmployeeTable import EmployeeTable
+from lesson_9.EmployeeAPI import EmployeeApi
+from lesson_9.CompanyID import CompanyID
+from lesson_9.EmployeeTable import EmployeeTable
 
 base_url = 'https://x-clients-be.onrender.com'
 employee_api = EmployeeApi(base_url)
 
 db_connection_string = ('postgresql://x_clients_user:95PM5lQE0NfzJWDQmLjbZ45ewrz1fLYa@dpg-cqsr9ulumphs73c2q40g-a.frankfurt-postgres.render.com/x_clients_db_fxd0')
-company_api = CompanyApi(db_connection_string)
+company_id = CompanyID(db_connection_string)
 employee_table = EmployeeTable(db_connection_string)
 
 #Новая компания
@@ -28,8 +28,8 @@ is_active = True
 
 def test_get_employee_list():
     #Создать новую компанию в базе данных
-    company_api.create(name, description)
-    new_company_id = company_api.get_max_id()
+    company_id.create(name, description)
+    new_company_id = company_id.get_max_id()
 
     #Создать нового сотрудника в базе данных
     employee_table.create(first_name, last_name, phone, new_company_id, is_active)
@@ -43,7 +43,7 @@ def test_get_employee_list():
 
     #Удалить нового сотрудника и новую компанию из базы данных
     employee_table.delete(new_employee_id)
-    company_api.delete(new_company_id)
+    company_id.delete(new_company_id)
 
     assert employee_list_api[0]["id"] == new_employee_id, \
      "Employee's ID is not equal"
@@ -52,8 +52,8 @@ def test_get_employee_list():
 
 def test_create_employee():
     #Создать новую компанию в базе данных
-    company_api.create(name, description)
-    new_company_id = company_api.get_max_id()
+    company_id.create(name, description)
+    new_company_id = company_id.get_max_id()
 
     #Создать нового сотрудника с помощью базы данных
     new_employee = employee_api.add_employee(id, first_name, last_name, middle_name, new_company_id, email, url, phone, birthdate, is_active)
@@ -64,15 +64,15 @@ def test_create_employee():
 
     #Удалить нового сотрудника и новую компанию из базы данных
     employee_table.delete(new_employee_id)
-    company_api.delete(new_company_id)
+    company_id.delete(new_company_id)
 
     assert len(employee) == 1, "Employee was not created"
 
 
 def test_get_employee():
     #Создать новую компанию в базе данных
-    company_api.create(name, description)
-    new_company_id = company_api.get_max_id()
+    company_id.create(name, description)
+    new_company_id = company_id.get_max_id()
 
     #Создать нового сотрудника в базе данных
     employee_table.create(first_name, last_name, phone, new_company_id, is_active)
@@ -83,7 +83,7 @@ def test_get_employee():
 
     #Удалить нового сотрудника и новую компанию из базы данных
     employee_table.delete(new_employee_id)
-    company_api.delete(new_company_id)
+    company_id.delete(new_company_id)
 
     assert employee["id"] == new_employee_id
     assert employee["firstName"] == first_name
@@ -92,8 +92,8 @@ def test_get_employee():
 
 def test_change_employee_by_api():
     #Создать новую компанию в базе данных
-    company_api.create(name, description)
-    new_company_id = company_api.get_max_id()
+    company_id.create(name, description)
+    new_company_id = company_id.get_max_id()
 
     #Создать нового сотрудника в базе данных
     employee_table.create(first_name, last_name, phone, new_company_id, is_active)
@@ -116,7 +116,7 @@ def test_change_employee_by_api():
 
     #Удалить нового сотрудника и новую компанию из базы данных
     employee_table.delete(new_employee_id)
-    company_api.delete(new_company_id)
+    company_id.delete(new_company_id)
 
     assert employee[0][0] == new_employee_id
     assert employee[0][8] == new_email
@@ -126,8 +126,8 @@ def test_change_employee_by_api():
 
 def test_change_employee_by_db():
     #Создать новую компанию в базе данных
-    company_api.create(name, description)
-    new_company_id = company_api.get_max_id()
+    company_id.create(name, description)
+    new_company_id = company_id.get_max_id()
 
     #Создать нового сотрудника в базе данных
     employee_table.create(first_name, last_name, phone, new_company_id, is_active)
