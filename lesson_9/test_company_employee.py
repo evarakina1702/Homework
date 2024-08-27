@@ -143,5 +143,5 @@ def test_change_employee_by_db():
 
     assert employee["id"] == new_employee_id
     assert employee["email"] == new_email
-    assert employee["url"] == new_url
+    assert employee["avatar_url"] == new_url
     assert employee["isActive"] == new_is_active
